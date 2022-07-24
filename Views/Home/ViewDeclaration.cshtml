@@ -1,0 +1,63 @@
+﻿@using MyEngine.Models
+@model IEnumerable<Declaration>
+
+<link href="~/Content/style.css?2" rel="stylesheet" />
+
+<div class="table">
+    @foreach (Declaration declaration in Model)
+    {
+        <div class="container_forDeclaration">
+            <div class="drop_container">
+                <ul>
+                    @{
+                        int j = 0;
+                        foreach (Image img in ViewBag.img)
+                        {
+                            if (img.DeclarationId == declaration.Id)
+                            {
+                                if (img.ImageOrder == 1)
+                                {
+                                    <li>
+                                        <img onmouseover="uploadImg(@declaration.Id, @j)" id="imgSpis-@declaration.Id-@j" src="~/Files/@img.ImagePath" />
+                                    </li>
+                                }
+                                j++;
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+
+            <div class="container_photo">
+                @foreach (Image img in ViewBag.Img)
+                {
+                    if (img.DeclarationId == declaration.Id)
+                    {
+                        <div class="photo" data-id-declaration="@declaration.Id">
+                            <img id="@declaration.Id" src="~/Files/@img.ImagePath">
+                        </div>
+                        break;
+
+                    }
+                }  
+            </div>
+
+            <div class="main_declaration_content">
+                <div class="container_title">
+                    <a data-id-declaration="@declaration.Id">@declaration.Title</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    $('.container_forDeclaration').hide();
+    $('.container_forDeclaration img').load(function () {
+        setTimeout(function () {
+            $('.container_forDeclaration').show();
+        }, 150)
+    });
+</script>
+
+<script src="~/MyScripts/Home/ViewDeclaration.js"></script>

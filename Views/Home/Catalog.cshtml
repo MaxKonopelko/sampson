@@ -1,0 +1,28 @@
+﻿@using MyEngine.Models
+@model IEnumerable<Category>
+
+<script src="~/MyScripts/Home/Catalog.js" defer></script>
+
+<div class="under_menu">
+    <div id="under">
+        @foreach (Category cat in Model)
+        {
+            <a onclick="loadCatalogCategory(@cat.Id)" tabindex="0">@cat.Name</a>
+        }
+    </div>
+</div>
+
+<div id="footer_content">
+    <div id="foot_content_id">
+        <div class="sorting">
+            <div class="sorting-two">
+                Сортировать по:
+                <a>Цена</a>
+                <a>Новое</a>
+                <a>Скидка</a>
+                <a>Популярное</a>
+            </div>
+        </div>
+        <div class="content"></div>
+    </div>
+</div>

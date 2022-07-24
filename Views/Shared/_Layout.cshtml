@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/Content.css" rel="stylesheet" />
+    <link href="~/Content/History.css" rel="stylesheet" />
+    <link href="~/Content/Parters.css" rel="stylesheet" />    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.flexslider-min.js"></script>
+    <script src="~/MyScripts/ajax-navigation.js"></script>
+    <script src="~/MyScripts/Home/Layout.js" defer></script>
+    <link rel="icon" href="Views/Shared/favicon.ico" type="image/x-icon"> 
+</head>
+<body>
+    <div class="knopka">
+        <a onclick="knopkaClick(0)">Главная</a>
+        <a onclick="knopkaClick(1)">Каталог продукции</a>
+        <a onclick="knopkaClick(2)">Акции</a>
+        <a onclick="knopkaClick(3)">Услуги</a>
+        <a onclick="knopkaClick(4)">О компании</a>
+        <a onclick="knopkaClick(5)">Партнерам</a>
+        <a onclick="knopkaClick(6)">Контакты</a>
+    </div>
+    <div class="header">
+        <div class="photo_a">
+            <div class="flexslider" id="fl1">
+                <ul class="slides">
+                    <li>
+                        <img src="~/Files/Images/1.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Files/Images/2.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Files/Images/3.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Files/Images/4.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Files/Images/5.jpg" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="photo_b">
+            <div class="flexslider" id="fl2">
+                <ul class="slides">
+                    <li>
+                        <img src="~/Files/Images/6.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Files/Images/7.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Files/Images/8.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Files/Images/9.jpg" />
+                    </li>
+                    <li>
+                        <img src="~/Files/Images/10.jpg" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="photo_d">
+            <img src="~/Files/Images/logos.png" alt="нет фото" />
+        </div>
+        <div class="photo_e">
+            <div class="text-two">
+                <p align="center">Тел.: +375 (212) 60-29-16 </p>
+                <p align="center">Факс: +375 (212) 48-29-19 </p>
+                <p align="center">comm@sampson.by </p>
+            </div>
+        </div>
+        <div class="photo_c">
+            <img src="~/Files/Images/11.jpg" alt="нет фото" />
+        </div>
+        <div class="photo_g">
+            <form method="get" action="/search" target="_blank">
+                <input name="q" id="form-query" value="" placeholder="поиск по сайту">
+                <input src="~/Files/Images/lupa.png" type="image" style="vertical-align: bottom; padding: 0;" />
+            </form>
+        </div>
+    </div>
+    <div class="menu">
+        <a onclick="loadCatalog(1)" tabindex="0">Мужские</a>
+        <a onclick="loadCatalog(2)" tabindex="0">Женские</a>
+        <a onclick="loadCatalog(3)" tabindex="0">Детские</a>
+    </div>
+    
+    <div class="container_gif"></div>
+    <div class="container" id="container_id">
+        @RenderBody()
+    </div>
+</body>
+</html>
+
+

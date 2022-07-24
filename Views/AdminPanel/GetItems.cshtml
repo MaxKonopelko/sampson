@@ -1,0 +1,19 @@
+﻿@*@model IEnumerable<MyEngine.Models.Section>
+
+    <select id="section" name="Section">
+        @foreach (var item in Model)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>*@
+
+@using MyEngine.Models
+@model IEnumerable<Category>
+
+<select id="category" name="CategoryId">
+
+    @foreach (var item in Model)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>

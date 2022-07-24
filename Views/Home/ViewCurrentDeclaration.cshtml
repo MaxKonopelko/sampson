@@ -1,0 +1,79 @@
+﻿@using MyEngine.Models
+@model Declaration
+
+<link href="~/Content/inform.css?2" rel="stylesheet" />
+
+<div class="content_inform">
+    <div class="сontent_description">
+        <div class="сontent_left">
+            <div class="content_photo">
+                <div class="content_photos">
+                    @foreach (Image img in ViewBag.img)
+                    {
+                        int i = 0;
+                        if (i == 0)
+                        {
+                            <img src="~/Files/@img.ImagePath" />
+                            break;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="slider_inform">
+            <div class="img_spis">
+                <ul>
+                    @{
+                        int j = 0;
+                        foreach (Image img in ViewBag.img)
+                        {
+                            <li>
+                                <img onmouseover="upload(@j)" id="imgSpis-@j" src="~/Files/@img.ImagePath" />
+                            </li>
+                            j++;
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="content_detail">
+            <div class="podrobno_name">Название: @Model.Name</div>
+            <div class="podrobno_description">Модель: @Model.Description</div>
+            <div class="podrobno_articl">Артикул: @Model.Article</div>
+            <div class="podrobno_price">Цена: 
+            @{
+                if (@ViewBag.Coast == null)
+                {
+                    <a style="cursor: pointer" onclick="knopkaClick(6)">уточнить</a>
+                }
+                else
+                {
+                    @ViewBag.Coast
+                }
+            }
+            </div>        
+            <div class="podrobno_size">Размер: @Model.Size</div>
+            <div class="podrobno_color">Цвет: @Model.Color</div>
+            <span class="composition_sostav"> @Model.Сonsist</span>
+            <div class="podrobno_composition">Состав:</div>
+            
+            <div class="podrobno_extra">Описание: <span class="composition_sostav_2"> @Model.ExtraDescription</span></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    gif(0);
+
+    $('.content_inform').hide();
+    setTimeout(function () {
+        $('.content_inform').fadeIn();
+    }, 300)
+
+    function upload(j) {
+        var imgPath = $("#imgSpis-" + j).attr('src');
+        $('.content_photos').children().first().replaceWith("<img src='" + imgPath + "'/>");
+        $('.content_photos img').hide().fadeIn();
+    }
+</script>
